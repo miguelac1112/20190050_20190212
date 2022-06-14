@@ -1,9 +1,11 @@
+
 package Beans;
 
 public class Banda {
     private String idBanda;
     private String nombre_banda;
     private int idlider;
+    private int favorito;
 
 
     public Banda(String idBanda, String nombre_banda, int idlider) {
@@ -34,5 +36,13 @@ public class Banda {
 
     public void setIdlider(int idlider) {
         this.idlider = idlider;
+    }
+
+    public int getFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(int favorito) {
+        this.favorito = favorito;
     }
 }
