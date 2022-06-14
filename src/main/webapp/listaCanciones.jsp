@@ -45,6 +45,7 @@
                         <td><%=cancion.getIdcancion()%></td>
                         <td><%=cancion.getCancion()%></td>
                         <td><%=cancion.getBanda()%></td>
+                        <td><input name="favoritos" id="favoritos" multiple  type="checkbox"  value="" aria-label="..." style="width:30px; height:30px "></td>
                     </tr>
                     <% ;
                     } %>
