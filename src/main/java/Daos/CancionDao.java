@@ -49,4 +49,31 @@ public class CancionDao {
         return listaCanciones;
     }
 
+    public ArrayList<Cancion> obtenerTodasCanciones() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<Cancion> listaCanciones = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(url, user, pass);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("select * from cancion")) {
+            while (rs.next()) {
+                Cancion cancion = new Cancion();
+                int id = rs.getInt(1);
+                String nombre_cancion = rs.getString(2);
+                String banda = rs.getString(3);
+                cancion.setIdcancion(id);
+                cancion.setCancion(nombre_cancion);
+                cancion.setBanda(banda);
+                listaCanciones.add(cancion);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("No se pudo realizar la busqueda");
+        }
+        return listaCanciones;
+    }
+
 }

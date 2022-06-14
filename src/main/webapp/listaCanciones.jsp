@@ -1,3 +1,4 @@
+<%@ page import="Beans.Cancion" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="textoBuscar" scope="request" type="java.lang.String" class="java.lang.String" />
 <jsp:useBean id="listaCanciones" scope="request" type="java.util.ArrayList<Beans.Cancion>"/>
@@ -18,7 +19,7 @@
                     <div class="col-lg-3">
                     </div>
                     <div class="col-lg-3">
-                        <a class="btn btn-warning" href=""> Mostrar todas las canciones</a>
+                        <a class="btn btn-warning" href="<%=request.getContextPath()%>/listaCanciones?a=listar"> Mostrar todas las canciones</a>
                     </div>
                 </div>
             </div>
@@ -30,6 +31,25 @@
                     <button class="btn btn-outline-info" type="button" id="button-addon2">Buscar</button>
                 </div>
             </form>
+            <div class="tabla">
+                <table class="table table-dark table-transparent table-hover">
+                    <thead>
+                        <th>#</th>
+                        <th>CANCION</th>
+                        <th>BANDA</th>
+                    </thead>
+                    <%
+                        for (Cancion cancion : listaCanciones) {
+                    %>
+                    <tr>
+                        <td><%=cancion.getIdcancion()%></td>
+                        <td><%=cancion.getCancion()%></td>
+                        <td><%=cancion.getBanda()%></td>
+                    </tr>
+                    <% ;
+                    } %>
+                </table>
+            </div>
         </div>
     </body>
 </html>

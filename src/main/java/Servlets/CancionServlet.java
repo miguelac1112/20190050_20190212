@@ -13,8 +13,22 @@ public class CancionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-        String action = request.getParameter("a") == null ? "listar" : request.getParameter("a");
+        String action = request.getParameter("a") == null? "inicio" : request.getParameter("a");
         CancionDao cancionDao = new CancionDao();
+        switch (action) {
+            case "inicio" -> {
+                request.setAttribute("inicio","vacio");
+
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("listaCanciones.jsp");
+                requestDispatcher.forward(request,response);
+            }
+            case "listar" -> {
+                request.setAttribute("listaCanciones", cancionDao.obtenerTodasCanciones());
+
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("listaCanciones.jsp");
+                requestDispatcher.forward(request, response);
+            }
+        }
 
     }
 
