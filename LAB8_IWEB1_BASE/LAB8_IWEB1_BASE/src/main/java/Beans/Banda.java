@@ -6,6 +6,7 @@ public class Banda {
     private String nombre_banda;
     private int idlider;
     private int favorito;
+    private String lista_perzaonalizada;
 
 
     public Banda(String idBanda, String nombre_banda, int idlider) {
@@ -44,5 +45,13 @@ public class Banda {
 
     public void setFavorito(int favorito) {
         this.favorito = favorito;
+    }
+
+    public String getLista_perzaonalizada() {
+        return lista_perzaonalizada;
+    }
+
+    public void setLista_perzaonalizada(String lista_perzaonalizada) {
+        this.lista_perzaonalizada = lista_perzaonalizada;
     }
 }
